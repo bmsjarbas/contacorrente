@@ -15,4 +15,13 @@ public class ContaCorrente
     {
         return new List<Lancamento>(Lancamentos.OrderByDescending(x=>x.Data));
     }
+
+    public Tuple<string, decimal>[] listarGastosPorCategoria()
+    {
+        var lancamentosAgrupados = from lanc in Lancamentos
+                                    group lanc.Valor by lanc.Categoria.ToLower() into g
+                                    select  Tuple.Create(g.Key, g.Sum());
+        return lancamentosAgrupados.ToArray();
+    }
 }
+        
