@@ -21,12 +21,9 @@ public class ContaCorrente
         return lancamentosAgrupadosPorCategoria().ToArray();
     }
 
-    public string CategoriaComMaiorGasto()
-    {
-        return lancamentosAgrupadosPorCategoria().OrderByDescending(x=>x.Item2).First().Item1;
-    }
+    public Tuple<string, decimal> CategoriaComMaiorGasto() => lancamentosAgrupadosPorCategoria().OrderByDescending(x => x.Item2).First();
 
-     private IEnumerable<Tuple<string, decimal>> lancamentosAgrupadosPorCategoria()
+    private IEnumerable<Tuple<string, decimal>> lancamentosAgrupadosPorCategoria()
      {
          var lancamentosAgrupados = from lanc in Lancamentos
                                     where lanc.Valor < 0

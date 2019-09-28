@@ -57,8 +57,9 @@ namespace tests
         public void DeveRetornarCategoriaComMaiorGasto()
         {
             var contaCorrente = new ContaCorrente(lancamentos);
-            string categoriaComMaiorGasto = contaCorrente.CategoriaComMaiorGasto();
-            Assert.Equal("alimentação", categoriaComMaiorGasto);
+            var categoriaComMaiorGasto = contaCorrente.CategoriaComMaiorGasto();
+            Assert.Equal("alimentação", categoriaComMaiorGasto.Item1);
+            Assert.Equal(30, categoriaComMaiorGasto.Item2);
 
         }
     }
