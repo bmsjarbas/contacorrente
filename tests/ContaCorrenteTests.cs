@@ -16,9 +16,9 @@ namespace tests
             dataAntesDeOntem = DateTime.Now.AddDays(-2);
             dataDeOntem = DateTime.Now.AddDays(-1);
             dataHoje = DateTime.Now;
-            var lancamentoAntesDeOntem = new Lancamento(dataAntesDeOntem, "Lançamento antes de ontem", 10, "alimentação");
-            var lancamentoHoje = new Lancamento(dataHoje, "Lançamento hoje", 20, "ALIMENTAÇÃO");
-            var lancamentoOntem = new Lancamento(dataDeOntem, "Lançamento ontem", 10, "transporte");
+            var lancamentoAntesDeOntem = new Lancamento(dataAntesDeOntem, "Lançamento antes de ontem", -10, "alimentação");
+            var lancamentoHoje = new Lancamento(dataHoje, "Lançamento hoje", -20, "ALIMENTAÇÃO");
+            var lancamentoOntem = new Lancamento(dataDeOntem, "Lançamento ontem", -10, "transporte");
 
             lancamentos = new List<Lancamento> { lancamentoOntem, lancamentoAntesDeOntem, lancamentoHoje };
         }
@@ -51,6 +51,15 @@ namespace tests
                         break;
                 }
             }
+        }
+
+        [Fact]
+        public void DeveRetornarCategoriaComMaiorGasto()
+        {
+            var contaCorrente = new ContaCorrente(lancamentos);
+            string categoriaComMaiorGasto = contaCorrente.CategoriaComMaiorGasto();
+            Assert.Equal("alimentação", categoriaComMaiorGasto);
+
         }
     }
 

@@ -18,10 +18,21 @@ public class ContaCorrente
 
     public Tuple<string, decimal>[] listarGastosPorCategoria()
     {
-        var lancamentosAgrupados = from lanc in Lancamentos
-                                    group lanc.Valor by lanc.Categoria.ToLower() into g
-                                    select  Tuple.Create(g.Key, g.Sum());
-        return lancamentosAgrupados.ToArray();
+        return lancamentosAgrupadosPorCategoria().ToArray();
     }
+
+    public string CategoriaComMaiorGasto()
+    {
+        return lancamentosAgrupadosPorCategoria().OrderByDescending(x=>x.Item2).First().Item1;
+    }
+
+     private IEnumerable<Tuple<string, decimal>> lancamentosAgrupadosPorCategoria()
+     {
+         var lancamentosAgrupados = from lanc in Lancamentos
+                                    where lanc.Valor < 0
+                                    group lanc.Valor by lanc.Categoria.ToLower() into g
+                                    select  Tuple.Create(g.Key, Math.Abs(g.Sum()));
+        return lancamentosAgrupados;
+     }
 }
         
