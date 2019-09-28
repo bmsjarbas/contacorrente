@@ -31,5 +31,14 @@ public class ContaCorrente
                                     select  Tuple.Create(g.Key, Math.Abs(g.Sum()));
         return lancamentosAgrupados;
      }
+
+    public Tuple<string, decimal> MesComMaiorGasto()
+    {
+        var lancamentosAgrupados = from lanc in Lancamentos
+                                    where lanc.Valor < 0
+                                    group lanc.Valor by lanc.Data.ToString("MMM") into g
+                                    select  Tuple.Create(g.Key, Math.Abs(g.Sum()));
+        return lancamentosAgrupados.OrderByDescending(x=>x.Item2).First();
+    }
 }
         

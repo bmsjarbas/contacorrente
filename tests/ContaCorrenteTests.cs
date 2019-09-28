@@ -62,6 +62,27 @@ namespace tests
             Assert.Equal(30, categoriaComMaiorGasto.Item2);
 
         }
+
+        [Fact]
+        public void DeveRetornarMesComMaiorGasto()
+        {
+            var dataMesRetrasado = DateTime.Now.AddMonths(-2);
+            var dataMesPassado = DateTime.Now.AddMonths(-1);
+            var dataMesAtual = DateTime.Now;
+
+            var lancamentoMesRetrasado = new Lancamento(dataMesRetrasado, "Lançamento mês retrasado", -10, "alimentação");
+            var lancamentoMesPassado = new Lancamento(dataMesPassado, "Lançamento mês passado", -20, "ALIMENTAÇÃO");
+            var lancamentoMesAtual = new Lancamento(dataMesAtual, "Lançamento mês atual", -10, "transporte");
+            var outroLancamentoMesAtual = new Lancamento(dataMesAtual, "Lançamento mês atual", -30, "alimentação");
+
+            var lancamentos = new List<Lancamento>{lancamentoMesAtual, lancamentoMesPassado, lancamentoMesRetrasado, outroLancamentoMesAtual};
+            var contaCorrente = new ContaCorrente(lancamentos);
+
+            var mesComMaiorGasto = contaCorrente.MesComMaiorGasto();
+            Assert.Equal(dataMesAtual.ToString("MMM"), mesComMaiorGasto.Item1);;
+
+
+        }
     }
 
 }
