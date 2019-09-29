@@ -40,5 +40,11 @@ public class ContaCorrente
                                     select  Tuple.Create(g.Key, Math.Abs(g.Sum()));
         return lancamentosAgrupados.OrderByDescending(x=>x.Item2).First();
     }
+
+    public decimal TotalDeGastos()
+    {
+        var valorTotal = Lancamentos.Where(x=>x.Valor < 0).Sum(x=>x.Valor);
+        return Math.Abs(valorTotal);
+    }
 }
         

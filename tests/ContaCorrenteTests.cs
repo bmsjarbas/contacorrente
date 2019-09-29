@@ -83,6 +83,13 @@ namespace tests
 
 
         }
+
+        [Fact]
+        public void DeveRetornarTotalDeGastos(){
+            var contaCorrente = new ContaCorrente(lancamentos);
+            decimal totalDeGastos = contaCorrente.TotalDeGastos();
+            Assert.Equal(40, totalDeGastos);
+        }
     }
 
 }
