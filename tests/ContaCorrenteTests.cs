@@ -75,8 +75,8 @@ namespace tests
             var lancamentoMesAtual = new Lancamento(dataMesAtual, "Lançamento mês atual", -10, "transporte");
             var outroLancamentoMesAtual = new Lancamento(dataMesAtual, "Lançamento mês atual", -30, "alimentação");
 
-            var lancamentos = new List<Lancamento>{lancamentoMesAtual, lancamentoMesPassado, lancamentoMesRetrasado, outroLancamentoMesAtual};
-            var contaCorrente = new ContaCorrente(lancamentos);
+            var lancamentosPorMes = new List<Lancamento>{lancamentoMesAtual, lancamentoMesPassado, lancamentoMesRetrasado, outroLancamentoMesAtual};
+            var contaCorrente = new ContaCorrente(lancamentosPorMes);
 
             var mesComMaiorGasto = contaCorrente.MesComMaiorGasto();
             Assert.Equal(dataMesAtual.ToString("MMM"), mesComMaiorGasto.Item1);;
@@ -89,6 +89,31 @@ namespace tests
             var contaCorrente = new ContaCorrente(lancamentos);
             decimal totalDeGastos = contaCorrente.TotalDeGastos();
             Assert.Equal(40, totalDeGastos);
+        }
+
+        [Fact]
+        public void DeveRetornarTotalDeRecebimentos(){
+            var recebimentoAntesDeOntem = new Lancamento(dataAntesDeOntem, "Depósito", 10);
+            var recebimentoHoje = new Lancamento(dataHoje, "Transferência", 20);
+            var recebimentoOntem = new Lancamento(dataDeOntem, "Depósito", 20);
+
+            var lancamentosDeRecebimento = new List<Lancamento> { recebimentoAntesDeOntem, recebimentoHoje, recebimentoOntem };
+            var contaCorrente = new ContaCorrente(lancamentosDeRecebimento);
+            decimal totalDeRecebimentos = contaCorrente.TotalDeRecebimentos();
+            Assert.Equal(50, totalDeRecebimentos);
+        }
+
+         [Fact]
+        public void DeveRetornarSaldoDeMovimentacoes(){
+            var recebimentoAntesDeOntem = new Lancamento(dataAntesDeOntem, "Depósito", 10);
+            var recebimentoHoje = new Lancamento(dataHoje, "Transferência", 20);
+            var recebimentoOntem = new Lancamento(dataDeOntem, "Depósito", 20);
+
+            var lancamentosDeRecebimento = new List<Lancamento> { recebimentoAntesDeOntem, recebimentoHoje, recebimentoOntem };
+            lancamentos.AddRange(lancamentosDeRecebimento);
+            var contaCorrente = new ContaCorrente(lancamentos);
+            decimal totalDeMovimentacoes = contaCorrente.SaldoDeMovimentacoes();
+            Assert.Equal(10, totalDeMovimentacoes);
         }
     }
 

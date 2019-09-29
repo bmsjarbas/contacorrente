@@ -46,5 +46,16 @@ public class ContaCorrente
         var valorTotal = Lancamentos.Where(x=>x.Valor < 0).Sum(x=>x.Valor);
         return Math.Abs(valorTotal);
     }
+
+    public decimal TotalDeRecebimentos()
+    {
+        var valorTotal = Lancamentos.Where(x=>x.Valor > 0).Sum(x=>x.Valor);
+        return Math.Abs(valorTotal);
+    }
+
+    public decimal SaldoDeMovimentacoes()
+    {
+        return Lancamentos.Sum(x=>x.Valor);
+    }
 }
         
