@@ -30,7 +30,7 @@ namespace contacorrente.models
         {
             var lancamentosAgrupados = from lanc in _lancamentos
                                        where lanc.Valor < 0
-                                       group lanc.Valor by lanc.Categoria.ToLower() into g
+                                       group lanc.Valor by lanc.Categoria into g
                                        select Tuple.Create(g.Key, Math.Abs(g.Sum()));
             return lancamentosAgrupados;
         }

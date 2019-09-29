@@ -19,7 +19,7 @@ namespace tests
             dataDeOntem = DateTime.Now.AddDays(-1);
             dataHoje = DateTime.Now;
             var lancamentoAntesDeOntem = new Lancamento(dataAntesDeOntem, "Lançamento antes de ontem", -10, "alimentação");
-            var lancamentoHoje = new Lancamento(dataHoje, "Lançamento hoje", -20, "ALIMENTAÇÃO");
+            var lancamentoHoje = new Lancamento(dataHoje, "Lançamento hoje", -20, "alimentação");
             var lancamentoOntem = new Lancamento(dataDeOntem, "Lançamento ontem", -10, "transporte");
 
             lancamentos = new List<Lancamento> { lancamentoOntem, lancamentoAntesDeOntem, lancamentoHoje };
@@ -73,7 +73,7 @@ namespace tests
             var dataMesAtual = DateTime.Now;
 
             var lancamentoMesRetrasado = new Lancamento(dataMesRetrasado, "Lançamento mês retrasado", -10, "alimentação");
-            var lancamentoMesPassado = new Lancamento(dataMesPassado, "Lançamento mês passado", -20, "ALIMENTAÇÃO");
+            var lancamentoMesPassado = new Lancamento(dataMesPassado, "Lançamento mês passado", -20, "alimentação");
             var lancamentoMesAtual = new Lancamento(dataMesAtual, "Lançamento mês atual", -10, "transporte");
             var outroLancamentoMesAtual = new Lancamento(dataMesAtual, "Lançamento mês atual", -30, "alimentação");
 
