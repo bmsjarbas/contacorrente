@@ -21,7 +21,7 @@ namespace contacorrente.repositories
             this.uriRecebimentos = $"{baseUri}/{recebimentosResource}";
         }
 
-        public IList<Lancamento> ListarPagamentos()
+        public List<Lancamento> ListarPagamentos()
         {
             
             var result = ProcessarHttpRequestAsync(uriPagamentos).Result;
@@ -29,7 +29,7 @@ namespace contacorrente.repositories
             
         }
 
-        public IList<Lancamento> ListarRecebimentos()
+        public List<Lancamento> ListarRecebimentos()
         {
             var result = ProcessarHttpRequestAsync(uriRecebimentos).Result;
             return MontarListaLancamentos(result);

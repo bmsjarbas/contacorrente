@@ -15,4 +15,16 @@ public class ApiExternaTests
         }
        
     }
+
+    [Fact]
+     public void DeveChamarApiExternaERetornarObjetosRecebimentos()
+    {
+        using(var httpClient = new HttpClient())
+        {
+             var movimentacoes = new Movimentacoes(httpClient, "https://my-json-server.typicode.com/cairano/backend-test", "recebimentos", "pagamentos");
+             var lancamentos = movimentacoes.ListarRecebimentos();
+             Assert.NotEmpty(lancamentos);
+        }
+       
+    }
 }
