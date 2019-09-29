@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using contacorrente.models;
 using Xunit;
 
 namespace tests
@@ -114,6 +116,19 @@ namespace tests
             var contaCorrente = new ContaCorrente(lancamentos);
             decimal totalDeMovimentacoes = contaCorrente.SaldoDeMovimentacoes();
             Assert.Equal(10, totalDeMovimentacoes);
+        }
+
+        [Fact]
+        public void DeveIncluirMovimentacaoEmLote()
+        {
+            var contaCorrente = new ContaCorrente(lancamentos);
+            Assert.Equal(3, contaCorrente.Lancamentos.Count());
+            var recebimentoAntesDeOntem = new Lancamento(dataAntesDeOntem, "Depósito", 10);
+            var recebimentoHoje = new Lancamento(dataHoje, "Transferência", 20);
+            var recebimentoOntem = new Lancamento(dataDeOntem, "Depósito", 20);
+            var lancamentosDeRecebimento = new List<Lancamento> { recebimentoAntesDeOntem, recebimentoHoje, recebimentoOntem };
+            contaCorrente.IncluirMovimentacaoEmLote(lancamentosDeRecebimento);
+            Assert.Equal(6, contaCorrente.Lancamentos.Count());
         }
     }
 

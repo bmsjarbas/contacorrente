@@ -1,17 +1,20 @@
 using System;
 
-public class Lancamento
+namespace contacorrente.models
 {
-    public Lancamento(DateTime data, string descricao, decimal valor, string categoria="")
+    public class Lancamento
     {
-        Data = data;
-        Descricao = descricao;
-        Valor = valor;
-        Categoria = categoria;
-    }
+        public Lancamento(DateTime data, string descricao, decimal valor, string categoria = "")
+        {
+            Data = data;
+            Descricao = descricao;
+            Valor = valor;
+            Categoria = categoria;
+        }
 
-    public DateTime Data { get; }
-    public string Descricao { get; }
-    public decimal Valor { get; }
-    public string Categoria { get; }
+        public DateTime Data { get; }
+        public string Descricao { get; }
+        public decimal Valor { get; }
+        public string Categoria { get; }
+    }
 }

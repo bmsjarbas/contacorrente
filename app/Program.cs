@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using contacorrente.models;
+using contacorrente.parsers;
+using contacorrente.repositories;
 
-namespace app
+namespace contacorrente.app
 {
     class Program
     {
@@ -13,8 +16,13 @@ namespace app
             if (args.Count() == 0)
                 throw new ArgumentException("Erro - Informar arquivo de log inicial");
             var pathArquivoLogInicial = args[0];
-            var fileStream = new FileStream(pathArquivoLogInicial, FileMode.Open);
+
+            FileStream fileStream = new FileStream(pathArquivoLogInicial, FileMode.Open);
             var lancamentos = ExtrairLancamentosDoArquivoDeLog(fileStream);
+            
+
+            var movimentacoes = new Movimentacoes(new System.Net.Http.HttpClient(), @"https://my-json-server.typicode.com/cairano/backend-test", "pagamentos", "recebimentos");
+            var movimentacoesApi = movimentacoes.ListarPagamentos();
 
         }
 
