@@ -36,6 +36,6 @@ Esta aplicação foi construída baseado nos tópicos de engenharia de sotware a
 
 1. Test driven Development
 2. Domain Driven Design
-2.1 Linguagem ubíqua.
-2.2 Agregação raíz.
-2.3 Repositório
+    1. Linguagem ubíqua.
+    2. Agregação raíz.
+    3. Repositório
