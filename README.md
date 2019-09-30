@@ -39,3 +39,18 @@ Esta aplicação foi construída baseado nos tópicos de engenharia de sotware a
     1. Linguagem ubíqua.
     2. Agregação raíz.
     3. Repositório
+
+### sobre a aplicação
+
+A aplicação é do tipo console e tem um menu auto explicativo conforme abaixo:
+
+```console
+1 - exibir o log de movimentações de forma ordenada
+2 - informar o total de gastos por categoria
+3 - informar qual categoria cliente gastou mais
+4 - informar qual foi o mês que cliente mais gastou
+5 - quanto de dinheiro o cliente gastou
+6 - quanto de dinheiro o cliente recebeu
+7 - saldo total de movimentações do cliente
+0 - Sair
+```
