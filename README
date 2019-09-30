@@ -1,7 +1,7 @@
 
 # backend-test
 
-![CircleCI](https://circleci.com/gh/randomjs/contacorrente.svg?style=svg)
+[![CircleCI](https://circleci.com/gh/randomjs/contacorrente/tree/master.svg?style=svg&circle-token=f27ef86fb055bd6820cf1472db421f070e7d3436)](https://circleci.com/gh/randomjs/contacorrente/tree/master)
 
 ## requisitos
 1. dotnet core versão 3.0 - Teste foi apenas validado nesta versão
