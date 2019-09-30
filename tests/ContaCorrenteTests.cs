@@ -45,7 +45,7 @@ namespace tests
             {
                 switch (categoria.Item1)
                 {
-                    case "alimentação": 
+                    case "alimentacao": 
                         Assert.Equal(30, categoria.Item2);
                         break;
                     case "transporte":
@@ -60,7 +60,7 @@ namespace tests
         {
             var contaCorrente = new ContaCorrente(lancamentos);
             var categoriaComMaiorGasto = contaCorrente.CategoriaComMaiorGasto();
-            Assert.Equal("alimentação", categoriaComMaiorGasto.Item1);
+            Assert.Equal("alimentacao", categoriaComMaiorGasto.Item1);
             Assert.Equal(30, categoriaComMaiorGasto.Item2);
 
         }
