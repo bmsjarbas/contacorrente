@@ -28,7 +28,7 @@ namespace contacorrente.parsers
             var dataTransacao = DateTime.ParseExact(dataTransacaoAsString, "dd-MMM", CultureInfo.InvariantCulture);
             var valorTransacao = Decimal.Parse(valorAsString.Trim(), new CultureInfo("pt-BR"));
 
-            return new Lancamento(dataTransacao, descricao, valorTransacao, categoria.ToLower());
+            return new Lancamento(dataTransacao, descricao, valorTransacao, categoria);
 
         }
 

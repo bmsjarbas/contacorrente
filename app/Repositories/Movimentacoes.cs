@@ -55,7 +55,7 @@ namespace contacorrente.repositories
 
         private Lancamento ConverterApiModelToModel(LancamentoApi apiModel)
         {
-            return new Lancamento(apiModel.Data, apiModel.Descricao, apiModel.Valor, apiModel.Categoria?.ToLower() ?? string.Empty);
+            return new Lancamento(apiModel.Data, apiModel.Descricao, apiModel.Valor, apiModel.Categoria ?? string.Empty);
         }
 
         private List<Lancamento> MontarListaLancamentos(List<LancamentoApi> lancamentosApi)
